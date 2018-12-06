@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :crimes
   resources :users
 
-  # Routes for assignments
+  # Routes for assignments and other customs
   get 'assignments/new', to: 'assignments#new', as: :new_assignment
   post 'assignments', to: 'assignments#create', as: :assignments
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   get 'suspects/new', to: 'suspects#new', as: :new_suspect
   post 'suspects', to: 'suspects#create', as: :suspects
   patch 'suspects/:id/terminate', to: 'suspects#terminate', as: :terminate_suspect
+
+  get 'crime_investigations/new', to: 'crime_investigations#new', as: :new_crime_investigation
+  post 'crime_investigations', to: 'crime_investigations#create', as: :crime_investigations
 
   # Toggle paths
 
