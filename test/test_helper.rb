@@ -23,8 +23,7 @@ class ActiveSupport::TestCase
     assert !condition, msg
   end
 
-  # Add a method to login a commisioner for testing
-
+  # Add a method to login a commisioner for testi
 
   # Spruce up minitest results...
   Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new]
