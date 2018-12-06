@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   post 'crime_investigations', to: 'crime_investigations#create', as: :crime_investigations
 
   get 'investigation_notes/new', to: 'investigation_notes#new', as: :new_investigation_note
-  post 'investigation_notes' to: 'investigation_notes#create' as: :investigation_notes
+  post 'investigation_notes', to: 'investigation_notes#create', as: :investigation_notes
 
   # Toggle paths
 
