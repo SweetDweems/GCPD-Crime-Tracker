@@ -1,29 +1,58 @@
-<h4>Active Units in GCPD</h4>
-<% if @units.empty? %>
-  <p>There are no active units at this time.</p>
-<% else %>
-  <table class="striped highlight">
-    <thead>
-      <th>Unit</th>
-      <th>Officers</th>
-      <th>Cases</th>
-      <th class="align_center">Edit</th>
-    </thead>
-    <% for unit in @units %>
-      <tr>
-        <!-- <td><%# best_in_place unit, :name, as: :input %></td> -->
-        <td><%= link_to unit.name, unit_path(unit) %></td>
-        <td><%= unit.number_of_active_officers %></td>
-        <td><%= unit.number_of_unique_open_investigations %></td>
-      <td class="align_center">
-        <%= link_to edit_unit_path(unit) do %>
-          <i class="material-icons">edit</i>
+<div class="row">
+  <div class="col s8">
+    <h4>Active Units in GCPD</h4>
+    <% if @units.empty? %>
+      <p>There are no active units at this time.</p>
+    <% else %>
+      <table class="striped highlight">
+        <thead>
+          <th>Unit</th>
+          <th>Officers</th>
+          <th>Cases</th>
+          <th class="align_center">Edit</th>
+        </thead>
+        <% for unit in @units %>
+          <tr>
+            <!-- <td><%# best_in_place unit, :name, as: :input %></td> -->
+            <td><%= link_to unit.name, unit_path(unit) %></td>
+            <td><%= unit.number_of_active_officers %></td>
+            <td><%= unit.number_of_unique_open_investigations %></td>
+          <td class="align_center">
+            <%= link_to edit_unit_path(unit) do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </td>
+          </tr>
         <% end %>
-      </td>
-      </tr>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate @units, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
     <% end %>
-  </table>
-  <p class="supertiny"></p>
-  <br />
-  <%= will_paginate @units, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
-<% end %>
+  </div>
+  <div class="col s4">
+    <div class="card">
+      <div class="card-content">
+        <h5>Recently Opened Investigations</h5>
+          <% if @investigations.empty? %>
+            <p>There are no new investigations at this time.</p>
+          <% else %>
+            <table class="striped highlight">
+              <thead>
+                <th>Title</th>
+                <th>Date Opened</th>
+              </thead>
+              <% for investigation in @investigations %>
+                <tr>
+                  <td><%= link_to investigation.title, investigation_path(investigation) %></td>
+                  <td><%= investigation.date_opened.strftime("%m/%d/%y") %></td>
+                </tr>
+              <% end %>
+            </table>
+            <p class="supertiny"></p>
+            <br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

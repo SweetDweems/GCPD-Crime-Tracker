@@ -49,6 +49,7 @@ class HomeController < ApplicationController
 
   def commish_dash
     @units = Unit.active.alphabetical.paginate(page: params[:page]).per_page(10)
+    @investigations = Investigation.is_open.chronological.last(5)
   end
 
 end
