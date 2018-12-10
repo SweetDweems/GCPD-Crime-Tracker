@@ -42,9 +42,12 @@ class HomeController < ApplicationController
   end
 
   def chief_dash
+    @unit = @officer.unit
+    @unit_officers = @unit.officers.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def commish_dash
+    @unit = Unit.all.alphabetical.paginate(page: params[:page]).per_page(5)
   end
 
 end

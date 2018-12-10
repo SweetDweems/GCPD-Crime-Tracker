@@ -1,5 +1,9 @@
 <% if logged_in? && current_user.role?(:officer) %>
   <%= render :partial => 'officer_dash' %>
+<% elsif logged_in? && current_user.role?(:chief) %>
+  <%= render :partial => 'chief_dash' %>
+<% elsif logged_in? && current_user.role?(:commish) %>
+  <%= render :partial => 'commish_dash' %>
 <% else %>
   <div class="row">
     <div class="col s8">
