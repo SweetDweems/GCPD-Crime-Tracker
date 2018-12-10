@@ -22,8 +22,8 @@ class CriminalsController < ApplicationController
 
   def create
     @criminal = Criminal.new(criminal_params)
-    if @suspect.save
-      flash[:notice] = "Successfully added #{criminal.name} as a criminal."
+    if @criminal.save
+      flash[:notice] = "Successfully added #{@criminal.name} as a criminal."
       redirect_to criminal_path(@criminal)
     else
       render action: 'new'
