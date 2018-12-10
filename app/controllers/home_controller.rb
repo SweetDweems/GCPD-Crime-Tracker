@@ -43,11 +43,12 @@ class HomeController < ApplicationController
 
   def chief_dash
     @unit = @officer.unit
-    @unit_officers = @unit.officers.alphabetical.paginate(page: params[:page]).per_page(10)
+    @officers = @unit.officers.active.alphabetical.paginate(page: params[:page]).per_page(10)
+    @investigations = Investigation.is_open.chronological.select{|i| i.assignments.count == 0}.last(5)
   end
 
   def commish_dash
-    @unit = Unit.all.alphabetical.paginate(page: params[:page]).per_page(5)
+    @units = Unit.active.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
 end

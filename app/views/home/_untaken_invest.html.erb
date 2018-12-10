@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Information for <%= @unit.name %></h5><br />
+
+    <b>Number of Active Officers:&nbsp;&nbsp;</b>
+      <%= @unit.number_of_active_officers %>
+      <br /><br />
+
+    <b>Number of Open Cases:&nbsp;&nbsp;</b>
+      <%= @unit.number_of_unique_open_investigations %>
+      <br /><br />
+  </div>
+</div>
+<div class="card">
+  <div class="card-content">
+    <h5>New Untaken Investigations</h5>
+      <% if @investigations.empty? %>
+        <p>There are no untaken investigations at this time.</p>
+      <% else %>
+        <table class="striped highlight">
+          <thead>
+            <th>Title</th>
+            <th>Date Opened</th>
+          </thead>
+          <% for investigation in @investigations %>
+            <tr>
+              <td><%= link_to investigation.title, investigation_path(investigation) %></td>
+              <td><%= investigation.date_opened.strftime("%m/%d/%y") %></td>
+            </tr>
+          <% end %>
+        </table>
+        <p class="supertiny"></p>
+        <br />
+    <% end %>
+  </div>
+</div>
