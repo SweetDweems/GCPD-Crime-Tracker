@@ -4,7 +4,9 @@ class CriminalsController < ApplicationController
   authorize_resource
 
   def index
-    @criminals = Criminal.alphabetical.paginate(page: params[:page]).per_page(10)
+    @all_criminals = Criminal.alphabetical.paginate(page: params[:page]).per_page(10)
+    @enhanced_criminals = Criminal.enhanced.alphabetical.paginate(page: params[:page]).per_page(10)
+    @convicted_criminals = Criminal.prior_record.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def show

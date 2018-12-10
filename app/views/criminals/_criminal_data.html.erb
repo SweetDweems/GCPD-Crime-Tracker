@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Criminal Information for <%= @criminal.proper_name %></h5><br />
+
+    <% unless @criminal.aka.nil? %>
+    <b>Alias:&nbsp;&nbsp;</b>
+      <%= @criminal.aka %>
+      <br /><br />
+    <% end %>  
+
+    <b>Enhanced Powers?&nbsp;&nbsp;</b>
+      <%= @criminal.enhanced_powers ? "Yes" : "No" %><br /><br />
+
+    <b>Convicted Felon?&nbsp;&nbsp;</b>
+      <%= @criminal.convicted_felon ? "Yes" : "No" %><br /><br />
+
+    <b>Notes:&nbsp;&nbsp;</b>
+      <%= @criminal.notes %><br /><br />
+  </div>
+</div>
